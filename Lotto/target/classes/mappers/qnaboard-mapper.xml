@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="com.spring.lotto.QnaBoardMapper">
+      <select id="select_all" resultType="QnaBoardVO">
+      select * from ${qna_board} order by ${cool_bno} desc
+      </select>
+      <!-- 
+          resultType : select를 했을 때 레코드 하나의 타입
+          원래는 패키지 이름을 포함한전체경로의 클래스 이름을 사용해야 함
+          mybatis-config.xml에서 typeAliases 속성에서 package를 
+          정의 했기 때문에 클래스 이름만 사용해도 됨
+          
+       -->
+       <select id="select_by_qna_bno" resultType="QnaBoardVO">
+       select * from ${qna_board}
+       where ${cool_bno} = #{qna_bno} 
+       </select>
+       <!-- #{} : SpEL(스프링에서 사용하는 Expression Language) -->
+       
+      
+       <insert id="insert">
+       insert into ${qna_board} (${cool_title}, ${cool_content}, ${cool_userid})
+       values (#{qna_title, jdbcType=VARCHAR}, #{qna_content, jdbcType=VARCHAR}, #{qna_userid, jdbcType=VARCHAR})
+       </insert>
+       
+       <update id="update">
+       update ${qna_board}
+       set ${cool_title} = #{qna_title, jdbcType=VARCHAR}, ${cool_content} = #{qna_content, jdbcType=VARCHAR}
+       where ${cool_bno} = #{qna_bno}
+       </update>
+       
+       <delete id="delete">
+       delete from ${qna_board}
+       where ${cool_bno} = #{qna_bno}
+       </delete>
+       
+       <select id="select_by_qna_userid" resultType="QnaBoardVO">
+       select * from ${qna_board}
+       where ${cool_userid} like #{qna_userid}
+       </select>
+       
+       <select id="select_by_qna_title_qna_content" resultType="QnaBoardVO">
+       select * from ${qna_board} 
+       where ${cool_title} like #{keyword} or
+                    ${cool_content} like #{keyword}
+       order by ${cool_bno} desc
+       </select>
+       
+       <select id="total_count" resultType="Integer">
+       select count(*) total_cnt from qna_board
+       </select>
+       
+       <select id="paging" resultType="QnaBoardVO">
+           select b.qna_bno, b.qna_title, b.qna_content, b.qna_userId, b.qna_regdate
+           from (
+              select rownum rn, a.*   
+              from (
+             select * from qna_board order by qna_bno desc
+           ) a
+       )  b  where rn between #{start} and #{end}
+       </select>
+       
+   </mapper>
+   

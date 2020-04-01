@@ -1,0 +1,104 @@
+package com.spring.lotto.persistence;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.spring.lotto.domain.StatVO;
+import com.spring.lotto.domain.TestVO;
+import com.spring.lotto.domain.WinVO;
+import com.spring.lotto.pageutil.ListBackNextCriteria;
+import com.spring.lotto.pageutil.PageCriteriaList;
+
+@Repository
+
+public class TestDAOImple implements TestDAO {
+
+	private static final String NAMESPACE = "com.spring.lotto.TestMapper";
+	private static final Logger logger = LoggerFactory.getLogger(TestDAOImple.class);
+
+	@Autowired
+	private SqlSession sqlSession;
+
+	@Override
+	public List<TestVO> select() {
+		logger.info("test select() 호출");
+		return sqlSession.selectList(NAMESPACE + ".select_all");
+	}
+
+	@Override
+	public int update_win(int lotto_number) {
+		logger.info("TestDAOImple - update 나와!");
+		logger.info("testImple - int i = " + lotto_number);
+
+		return sqlSession.update(NAMESPACE + ".update_win", lotto_number);
+	}
+
+	@Override
+	public int update_lose(int lotto_number) {
+		logger.info("TestDAOImple - update 나와!");
+		logger.info("testImple - int i = " + lotto_number);
+
+		return sqlSession.update(NAMESPACE + ".update_lose", lotto_number);
+	}
+
+	@Override
+	public List<WinVO> select_win() {
+		logger.info("testDAOImple에서 select_win 불러왔쑴");
+		return sqlSession.selectList(NAMESPACE + ".select_win");
+	}
+
+	@Override
+	public List<WinVO> select_lose() {
+		logger.info("testDAOImple에서 select_lose 불러왔쑴");
+		return sqlSession.selectList(NAMESPACE + ".select_lose");
+	}
+
+	// 메인 전 회차 가져오기 (-1) (페이징처리로 활용)
+	@Override
+	public int getTotalNums() {
+		logger.info("getTotalNums 호출..!");
+		return sqlSession.selectOne(NAMESPACE + ".total_count");
+	}
+
+	// selectlist.jsp 페이지 설정
+
+	@Override
+	public List<TestVO> select(PageCriteriaList criteria) {
+		logger.info("select(criteria) 호출 ");
+		return sqlSession.selectList(NAMESPACE + ".paging", criteria);
+	}
+
+	@Override
+	public int getTotalNumsOfRecords() {
+		logger.info("getTotalNumsOfRecords() 호출");
+		return sqlSession.selectOne(NAMESPACE + ".total_count");
+	}
+
+	@Override
+	public List<StatVO> select_won(int selval) {
+		return sqlSession.selectList(NAMESPACE + ".select_won", selval);
+	}
+
+	@Override
+	public List<StatVO> select_won_list() {
+		return sqlSession.selectList(NAMESPACE + ".select_won_list");
+	}
+
+	@Override
+	public List<StatVO> listbacknext_s(ListBackNextCriteria listcriteria) {
+		logger.info("selectPre(ListBackNextCriteria)_w 호출..! ");
+		return sqlSession.selectList(NAMESPACE + ".paging_w", listcriteria);
+	}
+
+	@Override
+	public int getTotalNums_w() {
+		logger.info("getTotalNums_w 호출..!");
+		return sqlSession.selectOne(NAMESPACE + ".total_count_w");
+	}
+
+}

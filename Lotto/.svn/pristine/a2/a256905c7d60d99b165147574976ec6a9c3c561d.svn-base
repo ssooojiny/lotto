@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.lotto.TestMapper">
+
+	<select id="select_all" resultType="TestVO">
+		select * from ${number_table}
+		order by ${hit_ep} desc
+	</select>
+
+  <update id="update_win" >
+    update ${member_number_win}
+    set ${gogosing} = '1'
+    where ${lotto_number} = #{lotto_number}
+  </update>
+  
+  <select id="select_win" resultType="WinVO">
+    select * from ${member_number_win}
+    order by ${choice_number} desc
+  </select>
+  
+    <select id="select_lose" resultType="WinVO">
+    select * from ${member_number_lose}
+    order by ${choice_number} desc
+  </select>
+  
+    <update id="update_lose" >
+    update ${member_number_lose}
+    set ${gogosing} = '1'
+    where ${lotto_number} = #{lotto_number}
+  </update>
+
+
+</mapper>

@@ -1,0 +1,20 @@
+package com.spring.lotto.persistence;
+
+import java.util.List;
+
+import com.spring.lotto.domain.MemberVO;
+
+public interface MemberDAO {
+	
+	public abstract int insert(MemberVO vo);
+	
+	public abstract MemberVO loginCheck(MemberVO vo);
+	
+	public abstract MemberVO select(String member_id);
+	
+	public abstract List<MemberVO> select();
+	
+	public abstract int update(MemberVO vo);
+	
+
+}

@@ -1,0 +1,127 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<%@ include file="../dropbar.jsp"%>
+<style type="text/css">
+  .content_wrap div {
+/*    border: 1px solid black; */
+   display: inline-block;
+  }
+
+  .signup_title {
+    width:100%;
+    font-size : 40px;
+    margin-left: 350px;
+    display:inline-block;
+    position: relative;
+  }
+  .signup_title img{
+    width: 200px;
+    hieght: 200px;
+    display:inline-block;
+    float:center;
+  }
+  .signup_top {
+  letter-spacing:7px;
+  padding:10x;
+  }
+  
+  .signup_cont {
+    margin-left:160px;
+  }
+   .signup_cont table td{
+   text-align: center;
+   width:200px;
+   }
+  
+  .signup_cont input#checkaa, #member_pw, #member_pwcheck, #member_name,
+    #member_nickname, #member_phone {
+  font-size: 14px;
+  display: block;
+  width: 500px;
+  height: 30px;
+  margin-bottom: 12px;
+  margin-left:20px;
+  padding: 16px 13px;
+  color: #999999;
+  border: 1px solid #d9d9d9;
+  background: transparent;
+  border-radius: 2px;
+  text-align: center;
+  border-radius: 8px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="left_content">
+
+</div>
+<div class="content_wrap">
+  <div style="width: 1200px; height: 700px; overflow: auto; overflow-x: hidden; overflow-y: auto; 
+                               scrollbar-highlight-color: #CCCCCC; scrollbar-shadow-color: #CCCCCC; scrollbar-arrow-color: #CCCCCC; scrollbar-face-color: #FFFFFF; 
+                               scrollbar-3dlight-color: #FFFFFF; scrollbar-darkshadow-color: #FFFFFF; scrollbar-track-color: #f7f7f7;">
+  
+    <div class="signup_title">
+      <div class="signup_top">
+        <img src="/lotto/resources/sel_image/signup_icon.png">
+      </div>
+      <div class="signup_top" >
+         <p>SIGN UP<p>
+         <p style="font-size:15px; letter-spacing:0px;"><span style="color:red">*</span>은 필수입력 사항 입니다.</p>
+      </div>
+    </div> <!-- signup title div -->
+    <div class="signup_cont">
+      <form action="signup" method="post">
+        <table>
+          <tr>
+            <td>아이디<span style="color:red">*</span></td>
+            <td><input type="text" class="member_id" name="member_id" id="checkaa" required="required" oninput="checkId()"></td>
+          </tr>
+          <tr>
+            <td>비밀번호<span style="color:red">*</span></td>
+            <td><input type="password" name="member_pw" id="member_pw" required class="pass" style= oninput="checkPwd()"></td>
+          </tr>
+          <tr>
+            <td>비밀번호 확인<span style="color:red">*</span></td>
+            <td><input type="password" id="member_pwcheck" required class="pass" oninput="checkPwd()"></td>
+          </tr>
+          <tr>
+            <td>이름<span style="color:red">*</span></td>
+            <td><input type="text" name="member_name" id="member_name" required="required" ></td>
+          </tr>
+          <tr>
+            <td>닉네임<span style="color:red">*</span></td>
+            <td><input type="text" name="member_nickname" id="member_nickname" required="required" ></td>
+          </tr>
+          <tr>
+            <td>전화번호<span style="color:red">*</span></td>
+            <td><input type="text" name="member_phone" id="member_phone" required="required">
+          </tr>
+          <tr>
+            <td style="height:50px;">마케팅 정보 수신 동의</td>
+            <td>
+              <input type="radio"  name="member_ad" value="1"> 동의 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="member_ad" value="0"> 거부
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td style="height:50px;">
+             <button type="submit" class="bttn-material-flat bttn-sm bttn-primary btn_submit" id="register" disabled="disabled">가입하기</button>
+             <button type="button" onclick="location.href='/lotto'" class="bttn-material-flat bttn-sm bttn-primary">홈으로</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

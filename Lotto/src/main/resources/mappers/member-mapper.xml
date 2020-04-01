@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.spring.lotto.MemberMapper">
+  
+    <insert id="insert">
+      insert into ${member_signup} values(#{member_name}, #{member_id}, #{member_pw}, #{member_nickname}, #{member_phone}, #{member_ad})
+    </insert>
+  
+    <select id="login" resultType="MemberVO">
+      select * from ${member_signup}
+      where ${member_id} = #{member_id} and
+      ${member_pw} = #{member_pw}
+    </select>
+    
+    <select id="select_all" resultType="MemberVO">
+    select * from ${member_signup}
+    </select>
+    
+    
+    <select id="select_by_member_id" resultType="MemberVO">
+      select * from ${member_signup}
+      where ${member_id} = #{member_id}
+    </select>
+    
+    <update id="update">
+      update ${member_signup} 
+      set ${member_pw} = #{member_pw}, ${member_phone} = #{member_phone}, ${member_ad} = #{member_ad}
+      where ${member_id} = #{member_id}
+    </update>
+    
+    <delete id="delete">
+      delete from ${member_signup}
+      where ${member_id} = #{member_id}
+    </delete>
+    
+  </mapper>
+  
+  

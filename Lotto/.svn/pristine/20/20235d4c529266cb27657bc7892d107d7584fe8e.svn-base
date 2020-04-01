@@ -1,0 +1,20 @@
+package com.spring.lotto.service;
+
+import java.util.List;
+
+import com.spring.lotto.domain.TestVO;
+import com.spring.lotto.domain.WinVO;
+
+public interface TestService {
+	public abstract List<TestVO> read();
+	
+	public abstract int update_win(int lotto_number);
+	
+	public abstract int update_lose(int lotto_number);
+	
+	public abstract List<WinVO> read_win();
+	
+	public abstract List<WinVO> read_lose(); 
+	
+
+}

@@ -1,0 +1,71 @@
+ package com.spring.lotto.interceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.spring.lotto.domain.MemberVO;
+
+public class LoginInterceptor extends HandlerInterceptorAdapter {
+	
+	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+	
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		logger.info("=== preHandle 호출");
+		String url = request.getParameter("targetUrl");
+		if(url != null && url != "") {
+			request.getSession().setAttribute("dest", url);
+		}
+		return true;
+	}
+	
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		logger.info("=== postHandle 호출");
+		// login result가 null이 아니면(로그인 성공)
+		// Session 객체에 login_id 속성 추가, 페이지 이동
+		// null이면 (로그인 실패) 로그인 페이지로 이동
+		
+		MemberVO vo = (MemberVO) modelAndView.getModel().get("login_result");
+		if(vo != null) {
+			logger.info("로그인 성공");
+			HttpSession session = request.getSession();
+			session.setAttribute("login_id", vo.getMember_id());
+			logger.info("getMemberid : " + vo.getMember_id());
+			session.removeAttribute("login_fail");
+			
+			String dest = (String) session.getAttribute("dest");
+			if(dest != null) {
+				if(dest.contains("mypage")) {
+					response.sendRedirect(dest+vo.getMember_id());
+				}else {
+					response.sendRedirect(dest);
+				}
+
+			} else {
+				response.sendRedirect("/lotto/mainpage");
+			}
+		}else if(vo == null) {
+			logger.info("로그인 실패");
+			HttpSession session = request.getSession();
+			
+		     session.setAttribute("login_fail", "fail");
+		     String dest = (String) session.getAttribute("dest");
+			 if(dest != null) {
+			 	response.sendRedirect(dest);
+		     } else {
+				response.sendRedirect("/lotto/mainpage");
+		     }			     
+		     
+		}
+	}
+
+}

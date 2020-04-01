@@ -1,0 +1,86 @@
+package com.spring.lotto.persistence;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.spring.lotto.domain.BoardVO;
+import com.spring.lotto.pageutil.PageCriteria;
+
+@Repository // @Component
+// 영속 계측(Persistence Layer)의 DB관련 기능을 담당하는
+// Spring component으로 등록함
+// 스프링 프레임 워크가 bean으로 생성하기 위해서는
+// root-contex.xml에서 bean으로 등록해야함
+// <context:component-scan .../>
+public class BoardDAOImple implements BoardDAO {
+     
+	 private static final String NAMESPACE = "com.spring.lotto.BoardMapper"; // board-mapper.xml에 있는 namespace와 동일
+	 private static final Logger logger = LoggerFactory.getLogger(BoardDAOImple.class);
+	 
+	 // MyBatis SqlSession을 사용하기 위해서
+	 // 스프링 프레임워크가 생성한bean 객체를 주입(injection)받음
+	 @Autowired
+	 private SqlSession sqlSession;
+	 
+	@Override
+	public List<BoardVO> select() {
+		logger.info("select() 호출");
+		return sqlSession.selectList(NAMESPACE + ".select_all");
+	}
+	
+	@Override
+	public BoardVO select(int bno) {
+		logger.info("select() 호출 : bno = " + bno);
+		return sqlSession.selectOne(NAMESPACE + ".select_by_bno", bno);
+	}
+	
+	@Override
+	public int insert(BoardVO vo) {
+		logger.info("insert() 호출");
+		return sqlSession.insert(NAMESPACE + ".insert", vo);
+	}
+	
+	@Override
+	public int update(BoardVO vo) {
+		logger.info("update() 호출 : bno = " + vo.getBno());
+		return sqlSession.update(NAMESPACE + ".update", vo);
+	}
+	
+	@Override
+	public int delete(int bno) {
+		logger.info("delete() 호출 : bno = " + bno);
+		return sqlSession.delete(NAMESPACE + ".delete", bno);
+	}
+	
+	@Override
+	public List<BoardVO> select(String userid) {
+		logger.info("select() 호출 : userid = " + userid);
+	     userid = "%" + userid + "%";
+		return sqlSession.selectList(NAMESPACE + ".select_by_userid", userid);
+	}
+	
+	@Override
+	public List<BoardVO> selectByTitleOrContent(String keyword) {
+		logger.info("selectByTitleOrContent() 호출 : keyword = " + keyword);
+		keyword = "%" + keyword + "%";
+		return sqlSession.selectList(NAMESPACE + ".select_by_title_content", keyword);
+	}
+	
+	@Override
+	public List<BoardVO> select(PageCriteria criteria) {
+		logger.info("select(creiteria) 호출 ");
+		return sqlSession.selectList(NAMESPACE + ".paging", criteria);
+	}
+	
+	@Override
+	public int getTotalNumsOfRecords() {
+		logger.info("getTotalNumsOfRecords() 호출");
+		return sqlSession.selectOne(NAMESPACE + ".total_count");
+	}
+
+} // end BoardDAOImple

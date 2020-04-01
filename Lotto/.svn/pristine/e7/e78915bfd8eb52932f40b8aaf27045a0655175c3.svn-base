@@ -1,0 +1,26 @@
+package com.spring.lotto.service;
+
+import java.util.List;
+
+import com.spring.lotto.domain.TestVO;
+import com.spring.lotto.domain.WinVO;
+import com.spring.lotto.pageutil.ListBackNextCriteria;
+
+public interface TestService {
+	public abstract List<TestVO> read();
+	
+	public abstract int update_win(int lotto_number);
+	
+	public abstract int update_lose(int lotto_number);
+	
+	public abstract List<WinVO> read_win();
+	
+	public abstract List<WinVO> read_lose(); 
+	
+	   // 메인에 보여질 한 회차 (페이징처리로 활용하기)
+	   public abstract List<TestVO> listbacknext(ListBackNextCriteria listcriteria);
+	   
+	   public abstract int getTotalNums();
+	
+
+}

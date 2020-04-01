@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.lotto.TestMapper">
+
+<!-- 	<select id="select_all" resultType="TestVO">
+		select * from ${number_table}
+		order by ${hit_ep} desc
+	</select> -->
+
+  <update id="update_win" >
+    update ${member_number_win}
+    set ${gogosing} = '1'
+    where ${lotto_number} = #{lotto_number}
+  </update>
+  
+  <select id="select_win" resultType="WinVO">
+    select * from ${member_number_win}
+    order by ${choice_number} desc
+  </select>
+  
+    <select id="select_lose" resultType="WinVO">
+    select * from ${member_number_lose}
+    order by ${choice_number} desc
+  </select>
+  
+    <update id="update_lose" >
+    update ${member_number_lose}
+    set ${gogosing} = '1'
+    where ${lotto_number} = #{lotto_number}
+  </update>
+  
+  <!--  혜선 -->
+
+  <!-- 회차로만 검색 -->
+   <select id="select_by_hit_ep" resultType="TestVO">
+      select * from
+      ${number_table}
+      where ${hit_ep} like #{hit_ep}
+   </select>
+
+   <!-- 메인 한 회차 -->
+   <select id="select_mini" resultType="TestVO">
+<![CDATA[
+       select * from number_table
+       where ROWNUM <= 1
+       ]]>
+   </select>
+
+
+   <!-- 페이지 -->
+   <select id="total_count" resultType="Integer">
+      select count(*) total_cnt
+      from number_table
+   </select>
+
+   <select id="paging" resultType="TestVO">
+      select b.hit_ep, b.hit_number1,
+      b.hit_number2, b.hit_number3, b.hit_number4,
+      b.hit_number5,
+      hit_number6, hit_bouns
+      from (
+      select rownum rn, a.*
+      from (
+      select * from
+      number_table order by hit_ep desc
+      ) a
+      ) b where rn between #{start} and
+      #{end}
+  </select>
+  
+  
+  <!-- 수홍오빠 -->
+   <select id="select_all" resultType="MinTestVO">
+      select * from ${number_table}
+      order by ${hit_ep} desc
+   </select> 
+    
+    <select id="select_choice" resultType="MinTestVO">
+       <![CDATA[
+       select *
+       from (
+       SELECT HIT_NUMBER, COUNT(*) as cnt
+       FROM (
+       SELECT *
+       FROM (select * from number_table 
+         
+       where rownum <= #{hit_select_number_choice})
+       UNPIVOT ( HIT_NUMBER FOR COL_NM IN (HIT_NUMBER1, HIT_NUMBER2, HIT_NUMBER3, HIT_NUMBER4, HIT_NUMBER5, HIT_NUMBER6) )
+       
+       ) 
+       GROUP BY HIT_NUMBER
+       ORDER BY cnt desc
+      )
+
+       where rownum <= 30
+       ]]>
+    </select>
+    
+    <select id="number_choice_select" resultType="MinTestVO">
+       <![CDATA[
+       select HIT_NUMBER
+       from (
+       SELECT HIT_NUMBER, COUNT(*) as cnt
+       FROM (
+       SELECT *
+       FROM (select * from number_table 
+         
+       where rownum <= #{hit_select_number_choice})
+       UNPIVOT ( HIT_NUMBER FOR COL_NM IN (HIT_NUMBER1, HIT_NUMBER2, HIT_NUMBER3, HIT_NUMBER4, HIT_NUMBER5, HIT_NUMBER6) )
+       
+       ) 
+       GROUP BY HIT_NUMBER
+       ORDER BY cnt desc
+     )
+
+       where rownum <= 30 
+       ]]>
+    </select>
+    
+    
+    <select id="low_select_choice" resultType="MinTestVO">
+       <![CDATA[
+       select *
+       from (
+       SELECT HIT_NUMBER, COUNT(*) as cnt
+       FROM (
+       SELECT *
+       FROM (select * from number_table 
+         
+       where rownum <= #{low_hit_select_number_choice})
+       UNPIVOT ( HIT_NUMBER FOR COL_NM IN (HIT_NUMBER1, HIT_NUMBER2, HIT_NUMBER3, HIT_NUMBER4, HIT_NUMBER5, HIT_NUMBER6) )
+       
+       ) 
+       GROUP BY HIT_NUMBER
+       ORDER BY cnt asc
+     )
+
+       where rownum <= 30 
+       ]]>
+    </select>
+    
+    
+    <select id="test_number" resultType="String">
+       <![CDATA[
+            select nvl(max('Y'),'N') as YN
+          from number_table
+          where hit_ep = (select max(hit_ep)
+                    from number_table)
+         and (hit_number1 = #{test_number} or
+              hit_number2 = #{test_number} or
+              hit_number3 = #{test_number} or
+              hit_number4 = #{test_number} or
+              hit_number5 = #{test_number} or
+              hit_number6 = #{test_number})        
+       ]]>
+    </select>
+
+
+</mapper>

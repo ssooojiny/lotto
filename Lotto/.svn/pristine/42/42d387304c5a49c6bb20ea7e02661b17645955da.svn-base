@@ -1,0 +1,248 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<%@ include file="../main-top.jsp"%>
+<%@ include file="../leftside.jsp"%>
+<%@ include file="../css.jsp"%>
+<style type="text/css">
+
+#layer_result{
+position:absolute;
+top: 60%;
+left: 30%;
+}
+
+.layerpop {
+    z-index: 1000;
+    border: 2px solid #ccc;
+    background: #fff;
+
+     }
+    
+.layerpop_area .layerpop_close {
+    width: 25px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent url('btn_exit_off.png') no-repeat; }
+
+.layerpop_area .layerpop_close:hover {
+    background: transparent url('btn_exit_on.png') no-repeat;
+    cursor: pointer; }
+ 
+.layerpop_area .contents {
+    width: 96%;    
+    margin: 2%;
+    color: #828282; } 
+
+
+.leftmenu{
+
+float: left;
+left : 5px;
+}
+
+.centermenu{
+  float : center;
+  display : inline-block;
+}
+
+.content{
+
+  min-height: calc(100vh - 300px);
+}
+
+.ngcc{
+  margin : auto;
+  border-collapse: collapse;
+  line-height: 1.5;
+  position: static;
+  right: 300px;
+}
+
+table.ngcc thead th{
+   padding: 5px;
+   font-weight: bold;
+   vertical-align: top;
+   color: #369;
+   border-bottom: 2px solid #036;
+   font-size: 13px;
+   text-align: center;
+}
+
+table.ngcc td {
+   
+   padding: 10px;
+   vertical-align: top;
+   border-bottom: 1px solid #ccc;
+}
+
+</style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div class="content">
+<div class="centermenu" style="position:relative;">
+<table class="ngcc">
+  <thead>
+    <th>자가진단 TEST</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center;">내  용</td>
+      <td>전혀<br>아니다</td>
+      <td>간혹<br>그렇다</td>
+      <td>대체로<br>그렇다</td>
+      <td>거의항상<br>그렇다</td>
+    </tr>
+    <tr>
+      <td>1. 귀하는 도박에서 잃어도 크게 상관없는 금액 이상으로 도박을 한적이 있습니까?</td>
+      
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q1" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>2. 귀하는 종전과 같은 수준의 스릴을 느끼기 위해 점점 더 많은 돈을 걸어야 했던 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q2" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>3. 귀하는 도박으로 잃은 돈을 만회하기 위해 다른 날 다시 도박을 하신 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q3" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>4. 귀하는 도박 자금을 마련하기 위해 돈을 빌리거나 가지고 있던 물품을 팔았던 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q4" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>5. 귀하는 자신의 도박행귀가 문제가 될만한 수준이라고 느낀 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q5" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>6. 귀하는 도박으로 인해서 스트레스나 불안감 등의 건강문제가 발생 했던 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q6" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>7. 귀하에게 남들이 귀하의 도박행위를 비난하거나 도박으로 인한 문제가 있다고 말한적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q7" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>    
+    <tr>
+      <td>8. 귀하의 도박행위로 인해 본인이나 가정에 재정적인 문제가 발생한 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q8" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td>9. 귀하는 자신의 도박하는 방식이나 도박을 해서 발생한 일에 대해 죄책감을 느낀 적이 있습니까?</td>
+      <c:forEach begin="0" step="1" varStatus="status" end="3">
+        <td><input type="radio" class="overdose" name="q9" value="${status.index}">${status.index}</td>
+      </c:forEach>
+    </tr>
+    <tr>
+      <td style="text-align:center;"><button type="button" class="bttn-material-flat bttn-sm bttn-primary testTotal" id="testTotal">TEST 결과 보기</button></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr> 
+  </tbody>             
+</table>
+<br>
+<div class="ngccim" style="position:static; width:200px; height:100px">
+        <img src="/lotto/resources/sel_image/ngcc.jpg" usemap="#Ngcc">
+        <map name="Ngcc">
+        <area shape="rect" coords="11, 249, 259, 305" href="https://www.ngcc.go.kr/">
+        <area shape="rect" coords="375, 244, 628, 306" href="https://www.kcgp.or.kr/cr/areaCnter/2/areaCnter.do">
+        </map>
+</div>
+</div>
+</div>
+
+<!-- 점수에 따라 다른 이미지를 팝업으로 띄울 div -->
+<div class="layerpop">
+  <img src="#" id="layer_result" style="display: none;" usemap="#closeLayer" >
+  <map name="closeLayer">
+    <area shape="rect" coords="442,25,462,45" onclick="popupClose()" style="cursor:pointer;">
+  </map>
+</div>
+
+<script type="text/javascript">
+
+function popupClose() {
+  $('#layer_result').hide();
+  console.log($('input:radio[name="q1"]').attr("checked"));
+}
+
+ 	$('#testTotal').on({	// 클릭시 합 구해서 점수에 따른 결과 보여주기
+	  click : function(){
+		var score = new Array();
+		var totalScore = 0;
+		var layer_name = '';
+		
+ 		for(var i = 1 ; i <= 9; i++){
+		  var oneScore = $('input[name="q'+i+'"]:checked').val();
+		  console.log('['+i+'] : ' + oneScore);
+		  if(oneScore != null){
+		    score.push(parseInt(oneScore));
+		  }
+		}
+		console.log(score); 
+		
+		for(var j = 0 ; j <score.length; j++){
+		   totalScore += score[j];
+		}
+		console.log('totalScore : ' + totalScore);
+		
+		 switch(totalScore){
+		 case 0:
+		   layer_name = 'test_layer_01';
+		   break;
+		 case 1:
+		 case 2:
+		   layer_name = 'test_layer_02';
+		   break;
+		 case 3:
+		 case 4:
+		 case 5:
+		 case 6:
+		 case 7:
+		   layer_name = 'test_layer_03';
+		   break;
+		 default : 
+		   layer_name = 'test_layer_04';
+		   break;
+		 }
+ 	 $('#layer_result').attr('src','/lotto/resources/sel_image/'+ layer_name +'.jpg').fadeIn();
+
+
+	  }
+	}); 
+</script>
+
+</body>
+<footer>
+ <%@ include file="../footer.jsp" %>
+</footer>
+</html>

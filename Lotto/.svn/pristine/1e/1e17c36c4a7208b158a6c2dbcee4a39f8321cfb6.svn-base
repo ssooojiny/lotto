@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+
+
+</style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>회원가입 페이지</h1>
+          <form action="signup" method="post">
+          <input type="text" name="member_id" required="required" placeholder="아이디" style="width: 300px; height: 50px; border:1px sold black;" ><br>
+          <input type="password" name="member_pw" required="required" placeholder="비밀번호" style="width: 300px; height: 50px; border:1px sold black;"><br>
+          <input type="text" name="member_name" required="required" placeholder="이름" style="width: 300px; height: 50px; border:1px sold black;"><br>
+          <input type="text" name="member_nickname" required="required" placeholder="닉네임" style="width: 300px; height: 50px; border:1px sold black;"><br>
+          <input type="text" name="member_phone" required="required" placeholder="전화번호" style="width: 300px; height: 50px; border:1px sold black;"><br>
+           마케팅 정보 수신동의<br>
+          <input type="radio" name="member_ad" value="1"> 동의
+          <input type="radio" name="member_ad" value="0"> 거부
+          <br><br>
+          <input type="submit" value="가입하기">
+          <button type="button" onclick="location.href='/lotto'">홈으로</button>
+          </form>
+
+
+</body>
+</html>

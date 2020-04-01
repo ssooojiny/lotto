@@ -1,0 +1,80 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Board</title>
+<%@ include file="../dropbar.jsp"%>
+<style type="text/css">
+.left_content{
+width:290px;
+height:700px;
+border: 1px solid black;
+float:left;
+}
+
+.content_wrap {
+width:1200px;
+height:700px;
+float:left;
+border: 1px solid black;
+overflow : hidden;
+padding-left: 10px;
+}
+</style>
+</head>
+<body>
+<h1>글 작성 페이지</h1>
+
+ <div class="left_content">
+ <%@ include file="../leftside.jsp"%>
+ </div>
+ <div class="content_wrap"> 
+  
+  <form action="register" method="post">
+  <div  class="board_register">
+  <p>제목 : <input type="text" name="title" placeholder="제목 입력" required="required"></p>
+  </div>
+  <div>
+  <p>작성자 : <input type="text" name="userid"  value="${login_id}"required="required"></p>
+  </div>
+  <div>
+  <textarea rows="20" cols="120" name="content" placeholder="내용 입력" required="required"></textarea>
+  </div>
+  <input type="submit" value="등록">
+  <button onclick="location='boardlist'">뒤로가기</button>
+  </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

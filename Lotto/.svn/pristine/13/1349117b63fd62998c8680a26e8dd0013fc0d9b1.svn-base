@@ -1,0 +1,13 @@
+package com.spring.lotto.persistence;
+
+import java.util.List;
+
+import com.spring.lotto.domain.TestVO;
+
+public interface TestDAO {
+	
+	public abstract List<TestVO> select();
+	
+	
+
+}

@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>analysis</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+</head>
+<body>
+<h1>Analysis 분석 페이지</h1>
+
+  <%@ include file="../main-top.jsp" %>
+  <button type="button" onclick="location.href='/lotto'">홈으로</button>
+
+
+</body>
+</html>

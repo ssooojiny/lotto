@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.loto_img div {
+  background-image: url('http://i.imgur.com/gvS0kEU.png');
+  height: 34px;
+  width: 47px;
+  padding-top: 13px;
+  font-family: tahoma;
+  font-size: 12pt;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  float: left
+}
+</style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 1000px">최근부터 선택하신 횟수까지 가장 많이 번호가 나온 순 입니다.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <c:forEach var="vo" items="${testList3 }">
+        <tr>          
+          <td><div class="loto_img">
+              <hr>
+              <div style="background-color: #ff99cc;">${vo.hit_number }</div>
+              <div style="background-color: #ff99cc;">${vo.cnt }</div>       
+          </div></td>
+        </tr>
+      </c:forEach>
+    </tbody>
+  </table>  
+</body>
+</html>

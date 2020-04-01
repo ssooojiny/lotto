@@ -1,0 +1,118 @@
+package com.spring.lotto.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.spring.lotto.domain.TestVO;
+import com.spring.lotto.domain.WinVO;
+import com.spring.lotto.service.TestService;
+
+@Controller
+@RequestMapping(value = "/main")
+public class MainController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	
+	@Autowired
+	private TestService testService;
+	
+	@RequestMapping(value = "/selectlist", method = RequestMethod.GET)
+	public void selectlist(Model model) {
+		logger.info("selectlist() 호출");
+		List<TestVO> list = testService.read();
+		model.addAttribute("testList", list);
+	}
+	
+	
+	@RequestMapping(value = "/analysis", method = RequestMethod.GET)
+	public void analysis() {
+		logger.info("analysis() 호출");
+	}
+	
+	@RequestMapping(value="/expectation", method=RequestMethod.GET)
+	public void expectation(Model model) {
+		logger.info("expectation() 호출");
+		List<WinVO> list = testService.read_win();
+		model.addAttribute("win_list", list);
+	}
+	
+	@RequestMapping(value="/expectationlose", method=RequestMethod.GET)
+	public void expectationLose(Model model) {
+		logger.info("expectation() 호출");
+		List<WinVO> list = testService.read_lose();
+		model.addAttribute("lose_list", list);
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/selectednum", method=RequestMethod.GET)
+	public void selectedNum(HttpServletRequest req, Model model) {
+		logger.info("controller - selectedNum 불러라~!~!");
+		
+		String[] selected_data = req.getParameterValues("selected_num");
+		
+		for(int i=0; i<selected_data.length; i++) {
+			
+			logger.info("selected_data[i] = " + selected_data[i]);
+			
+			int lotto_number = Integer.parseInt(selected_data[i]);
+			
+				logger.info("lotto_number["+i+"] : " + lotto_number);
+				
+				testService.update_win(lotto_number); 
+				
+			}
+
+		}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectedlosenum", method=RequestMethod.GET)
+	public void selectedloseNum(HttpServletRequest req, Model model) {
+		logger.info("controller - selectedloseNum 불러라~!~!");
+		
+		String[] selected_data = req.getParameterValues("selected_lose_num");
+		
+		for(int i=0; i<selected_data.length; i++) {
+			
+			logger.info("selected_data[i] = " + selected_data[i]);
+			
+			int lotto_number_l = Integer.parseInt(selected_data[i]);
+			
+				logger.info("lotto_number["+i+"] : " + lotto_number_l);
+				
+				testService.update_lose(lotto_number_l); 
+			}
+		}
+	
+	@RequestMapping(value="/personal", method=RequestMethod.GET)
+	public void persoanl() {
+		
+	}
+	
+	@RequestMapping(value="/term", method=RequestMethod.GET)
+	public void term() {
+		
+	}
+	
+	@RequestMapping(value="/policy", method=RequestMethod.GET)
+	public void policy() {
+		
+	}
+	
+	@RequestMapping(value="/policy-pers", method=RequestMethod.GET)
+	public void policyPers() {
+		
+	}
+	
+	
+}

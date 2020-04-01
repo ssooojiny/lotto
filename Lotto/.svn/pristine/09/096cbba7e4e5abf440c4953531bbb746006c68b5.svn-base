@@ -1,0 +1,45 @@
+package com.spring.lotto.pageutil;
+
+public class ListBackNextCriteria {
+	
+	private int page; // 현재 페이지 번호
+	private int viewlistone; // 한 페이지의 회차리스트 개수
+	
+	public ListBackNextCriteria() {
+		this.page = 1;
+		this.viewlistone = 1;
+	}
+
+	public ListBackNextCriteria(int page, int viewlistone) {
+		
+		this.page = page;
+		this.viewlistone = viewlistone;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
+	public int getViewlistone() {
+		return viewlistone;
+	}
+
+	public void setViewlistone(int viewlistone) {
+		this.viewlistone = viewlistone;
+	}
+	
+	// 현재 보여지는 페이지의 시작 글 일련번호(rn)
+	public int getStart() {
+		return (this.page - 1) * this.viewlistone + 1;
+	}
+
+	// 현재 보여지는 페이지의 마지막 글 일련번호(rn) // 필요한가..??
+	public int getEnd() {
+		return this.page * this.viewlistone;
+	}
+	
+}

@@ -1,0 +1,25 @@
+package com.spring.lotto.persistence;
+
+import java.util.List;
+
+import com.spring.lotto.domain.TestVO;
+import com.spring.lotto.domain.WinVO;
+import com.spring.lotto.pageutil.ListBackNextCriteria;
+
+public interface TestDAO {
+	
+	public abstract List<TestVO> select();
+	
+	public abstract int update_win(int lotto_number);
+	
+	public abstract List<WinVO> select_win();
+	
+	public abstract List<WinVO> select_lose();
+	
+	public abstract int update_lose(int lotto_number); 
+	
+	// 페이징 처리 형태로 전 회차 가져오기.
+	   public abstract List<TestVO> listbacknext(ListBackNextCriteria listcriteria);
+	   public abstract int getTotalNums();
+
+}

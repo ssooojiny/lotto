@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- propertis 
+    - DB 테이블 및 컬럼 이름을 mybatis와 연동하기 위한 설정
+    - name : mybatis에서 사용될 이름
+    - value : DB에 존재하는 실제 테이블 및 컬럼 이름
+   -->
+  <properties>
+    <property name="number_table" value="number_table"/>
+    <property name="hit_ep" value="hit_ep"/>
+    <property name="hit_number1" value="hit_number1"/>
+    <property name="hit_number2" value="hit_number2"/>
+    <property name="hit_number3" value="hit_number3"/>
+    <property name="hit_number4" value="hit_number4"/>
+    <property name="hit_number5" value="hit_number5"/>
+    <property name="hit_number6" value="hit_number6"/>
+    <property name="hit_bouns" value="hit_bouns"/>
+            
+    <property name="member_number_win" value="member_number_win"/>
+    <property name="lotto_number" value="lotto_number"/>
+    <property name="choice_number" value="choice_number"/>
+    <property name="gogosing" value="gogosing"/>
+    
+    <property name="member_number_lose" value="member_number_lose"/>
+    <property name="lotto_number_l" value="lotto_number_l"/>
+    <property name="choice_number_l" value="choice_number_l"/>
+    <property name="gogosing_l" value="gogosing_l"/>
+    
+    <property name="member_signup" value="member_signup"/>
+    <property name="member_name" value="member_name"/>
+    <property name="member_id" value="member_id"/>
+    <property name="member_pw" value="member_pw"/>
+    <property name="member_nickname" value="member_nickname"/>
+    <property name="member_phone" value="member_phone"/>
+    <property name="member_ad" value="member_ad"/>
+    
+    <property name="free_board" value="free_board"/>
+    <property name="bno" value="bno"/>
+    <property name="title" value="title"/>
+    <property name="content" value="content"/>
+    <property name="userid" value="userid"/>
+    <property name="regdate" value="regdate"/>
+    
+    <property name="free_reply" value="free_reply"/>
+    <property name="col_rno" value="rno"/>
+    <property name="col_bno" value="bno"/>
+    <property name="col_rtext" value="rtext"/>
+    <property name="col_replier" value="replier"/>
+    <property name="col_regdate" value="regdate"/>    
+    
+        
+    
+  </properties>
+  
+  <!-- 쿼리 실행 후 리턴 타입을 domain 클래스에 맞게 적용 -->
+  <typeAliases>
+    <package name="com.spring.lotto.domain"/>
+  </typeAliases>
+  
+</configuration>

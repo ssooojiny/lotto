@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- propertis 
+    - DB 테이블 및 컬럼 이름을 mybatis와 연동하기 위한 설정
+    - name : mybatis에서 사용될 이름
+    - value : DB에 존재하는 실제 테이블 및 컬럼 이름
+   -->
+  <properties>
+    <property name="number_table" value="number_table"/>
+    <property name="hit_ep" value="hit_ep"/>
+    <property name="hit_number1" value="hit_number1"/>
+    <property name="hit_number2" value="hit_number2"/>
+    <property name="hit_number3" value="hit_number3"/>
+    <property name="hit_number4" value="hit_number4"/>
+    <property name="hit_number5" value="hit_number5"/>
+    <property name="hit_number6" value="hit_number6"/>
+    <property name="hit_bouns" value="hit_bouns"/>
+            
+    <property name="member_number_win" value="member_number_win"/>
+    <property name="win_member_ep" value="win_member_ep"/>
+    <property name="win_number1" value="win_number1"/>
+    <property name="win_number2" value="win_number2"/>
+    <property name="win_number3" value="win_number3"/>
+    <property name="win_number4" value="win_number4"/>
+    <property name="win_number5" value="win_number5"/>
+    <property name="win_number6" value="win_number6"/>
+    <property name="win_number7" value="win_number7"/>
+    <property name="win_number8" value="win_number8"/>
+    <property name="win_number9" value="win_number9"/>
+    <property name="win_number10" value="win_number10"/>
+    <property name="win_number11" value="win_number11"/>
+    <property name="win_number12" value="win_number12"/>
+    <property name="win_number13" value="win_number13"/>
+    <property name="win_number14" value="win_number14"/>
+    <property name="win_number15" value="win_number15"/>
+    <property name="win_number16" value="win_number16"/>
+    <property name="win_number17" value="win_number17"/>
+    <property name="win_number18" value="win_number18"/>
+    <property name="win_number19" value="win_number19"/>
+    <property name="win_number20" value="win_number20"/>
+    <property name="win_number21" value="win_number21"/>
+    <property name="win_number22" value="win_number22"/>
+    <property name="win_number23" value="win_number23"/>
+    <property name="win_number24" value="win_number24"/>
+    <property name="win_number25" value="win_number25"/>
+    <property name="win_number26" value="win_number26"/>
+    <property name="win_number27" value="win_number27"/>
+    <property name="win_number28" value="win_number28"/>
+    <property name="win_number29" value="win_number29"/>
+    <property name="win_number30" value="win_number30"/>
+    <property name="win_number31" value="win_number31"/>
+    <property name="win_number32" value="win_number32"/>
+    <property name="win_number33" value="win_number33"/>
+    <property name="win_number34" value="win_number34"/>
+    <property name="win_number35" value="win_number35"/>
+    <property name="win_number36" value="win_number36"/>
+    <property name="win_number37" value="win_number37"/>
+    <property name="win_number38" value="win_number38"/>
+    <property name="win_number39" value="win_number39"/>
+    <property name="win_number40" value="win_number40"/>
+    <property name="win_number41" value="win_number41"/>
+    <property name="win_number42" value="win_number42"/>
+    <property name="win_number43" value="win_number43"/>
+    <property name="win_number44" value="win_number44"/>
+    <property name="win_number45" value="win_number45"/>
+    
+    <property name="member_number_lose" value="member_number_lose"/>
+    <property name="lose_member_ep" value="lose_member_ep"/>
+    <property name="lose_number1" value="lose_number1"/>
+    <property name="lose_number2" value="lose_number2"/>
+    <property name="lose_number3" value="lose_number3"/>
+    <property name="lose_number4" value="lose_number4"/>
+    <property name="lose_number5" value="lose_number5"/>
+    <property name="lose_number6" value="lose_number6"/>
+    <property name="lose_number7" value="lose_number7"/>
+    <property name="lose_number8" value="lose_number8"/>
+    <property name="lose_number9" value="lose_number9"/>
+    <property name="lose_number10" value="lose_number10"/>
+    <property name="lose_number11" value="lose_number11"/>
+    <property name="lose_number12" value="lose_number12"/>
+    <property name="lose_number13" value="lose_number13"/>
+    <property name="lose_number14" value="lose_number14"/>
+    <property name="lose_number15" value="lose_number15"/>
+    <property name="lose_number16" value="lose_number16"/>
+    <property name="lose_number17" value="lose_number17"/>
+    <property name="lose_number18" value="lose_number18"/>
+    <property name="lose_number19" value="lose_number19"/>
+    <property name="lose_number20" value="lose_number20"/>
+    <property name="lose_number21" value="lose_number21"/>
+    <property name="lose_number22" value="lose_number22"/>
+    <property name="lose_number23" value="lose_number23"/>
+    <property name="lose_number24" value="lose_number24"/>
+    <property name="lose_number25" value="lose_number25"/>
+    <property name="lose_number26" value="lose_number26"/>
+    <property name="lose_number27" value="lose_number27"/>
+    <property name="lose_number28" value="lose_number28"/>
+    <property name="lose_number29" value="lose_number29"/>
+    <property name="lose_number30" value="lose_number30"/>
+    <property name="lose_number31" value="lose_number31"/>
+    <property name="lose_number32" value="lose_number32"/>
+    <property name="lose_number33" value="lose_number33"/>
+    <property name="lose_number34" value="lose_number34"/>
+    <property name="lose_number35" value="lose_number35"/>
+    <property name="lose_number36" value="lose_number36"/>
+    <property name="lose_number37" value="lose_number37"/>
+    <property name="lose_number38" value="lose_number38"/>
+    <property name="lose_number39" value="lose_number39"/>
+    <property name="lose_number40" value="lose_number40"/>
+    <property name="lose_number41" value="lose_number41"/>
+    <property name="lose_number42" value="lose_number42"/>
+    <property name="lose_number43" value="lose_number43"/>
+    <property name="lose_number44" value="lose_number44"/>
+    <property name="lose_number45" value="lose_number45"/>
+    
+    <property name="member_signup" value="member_signup"/>
+    <property name="member_name" value="member_name"/>
+    <property name="member_id" value="member_id"/>
+    <property name="member_pw" value="member_pw"/>
+    <property name="member_nickname" value="member_nickname"/>
+    <property name="member_phone" value="member_phone"/>
+    <property name="member_ad" value="member_ad"/>
+    
+    <property name="free_board" value="free_board"/>
+    <property name="bno" value="bno"/>
+    <property name="title" value="title"/>
+    <property name="content" value="content"/>
+    <property name="userid" value="userid"/>
+    <property name="regdate" value="regdate"/>
+    
+    <property name="free_reply" value="free_reply"/>
+    <property name="col_rno" value="rno"/>
+    <property name="col_bno" value="bno"/>
+    <property name="col_rtext" value="rtext"/>
+    <property name="col_replier" value="replier"/>
+    <property name="col_regdate" value="regdate"/>    
+    
+        
+    
+  </properties>
+  
+  <!-- 쿼리 실행 후 리턴 타입을 domain 클래스에 맞게 적용 -->
+  <typeAliases>
+    <package name="com.spring.lotto.domain"/>
+    
+  </typeAliases>
+  
+</configuration>

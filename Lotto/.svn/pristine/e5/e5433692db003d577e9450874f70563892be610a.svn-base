@@ -1,0 +1,390 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+<h1>회원 예상 1등 번호</h1>
+
+<h2>금주 예상되는 <span style="color:red;">1등</span> 번호는!?</h2>
+
+  <%@ include file="../main-top.jsp" %>
+  <button type="button" onclick="location.href='/lotto'">홈으로</button>
+    
+<table border="0px" cellpadding="0" cellspacing="0" width="20%" style="padding-left:10px;">
+  <thead>
+    <tr height="30">
+      <th height="60" colspan="3" align="center">실시간 투표 참여하기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <div style="float:left; width:216px; padding:0px; margin:0px;" id="sel_num">
+    
+    <tr>
+      <td></td>
+      <td align="center">
+      <table cellpaddding="0" cellspacing="0" width="90%" border="0">
+        <tbody>
+          <tr height="24">
+            <td height="34">
+              <font color="000000">
+                <strong>번호를 선택하세요</strong>
+              </font>
+              </td>
+          </tr>
+          <tr>
+            <td>
+              <table cellpadding="0" cellspacing="0" width="100%">
+                <tbody>
+                  <tr height="5">
+                  <td></td>
+                  </tr>
+                  <tr>
+                  <!-- 1부터 10 -->
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_1_off.gif" style="cursor:pointer;" id="1">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_2_off.gif" style="cursor:pointer;" id="2">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_3_off.gif" style="cursor:pointer;" id="3">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_4_off.gif" style="cursor:pointer;" id="4">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_5_off.gif" style="cursor:pointer;" id="5">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_6_off.gif" style="cursor:pointer;" id="6">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_7_off.gif" style="cursor:pointer;" id="7">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_8_off.gif" style="cursor:pointer;" id="8">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_9_off.gif" style="cursor:pointer;" id="9">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_10_off.gif" style="cursor:pointer;" id="10">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  
+                  <!-- 11부터 20 -->
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_11_off.gif" style="cursor:pointer;">
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_12_off.gif" style="cursor:pointer;" id="12">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_13_off.gif" style="cursor:pointer;" id="13">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_14_off.gif" style="cursor:pointer;"  id="14">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_15_off.gif" style="cursor:pointer;"   id="15">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_16_off.gif" style="cursor:pointer;"  id="16">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_17_off.gif" style="cursor:pointer;"   id="17">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_18_off.gif" style="cursor:pointer;"   id="18">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_19_off.gif" style="cursor:pointer;"  id="19">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_20_off.gif" style="cursor:pointer;" id="20">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  
+                   <!-- 21부터 30 -->
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_21_off.gif" style="cursor:pointer;"   id="21">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_22_off.gif" style="cursor:pointer;"  id="22">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_23_off.gif" style="cursor:pointer;"   id="23">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_24_off.gif" style="cursor:pointer;" id="24">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_25_off.gif" style="cursor:pointer;"  id="25">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_26_off.gif" style="cursor:pointer;"   id="26">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_27_off.gif" style="cursor:pointer;"   id="27">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_28_off.gif" style="cursor:pointer;"  id="28">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_29_off.gif" style="cursor:pointer;" id="29">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_30_off.gif" style="cursor:pointer;"  id="30">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <!-- 31부터 45 -->
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_31_off.gif" style="cursor:pointer;"  id="31">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_32_off.gif" style="cursor:pointer;"  id="32">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_33_off.gif" style="cursor:pointer;"   id="33">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_34_off.gif" style="cursor:pointer;"   id="34">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_35_off.gif" style="cursor:pointer;"   id="35">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_36_off.gif" style="cursor:pointer;"   id="36">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_37_off.gif" style="cursor:pointer;" id="37">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_38_off.gif" style="cursor:pointer;"   id="38">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_39_off.gif" style="cursor:pointer;"   id="39">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_40_off.gif" style="cursor:pointer;"  id="40">
+                    </td>
+                    <td width="5"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_41_off.gif" style="cursor:pointer;"  id="41">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_42_off.gif" style="cursor:pointer;"   id="42">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_43_off.gif" style="cursor:pointer;"  id="43">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_44_off.gif" style="cursor:pointer;"  id="44">
+                    </td>
+                   <td width="5"></td>
+                    <td width="14">
+                      <img src="/lotto/resources/image/myfixed_num_45_off.gif" style="cursor:pointer;"  id="45">
+                    </td>
+                    <td width="5"></td>
+                  </tr>               
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr height="10">
+          <td></td>
+          </tr>
+          <!-- 선택번호 -->
+          <tr height="24">
+            <td>
+              <b>선택번호 (최대10개)</b>
+            </td>
+          </tr>
+          <tr height="44" bgcolor="F2F2F0">
+            <td align="center" valgin="top">
+              <table width="90%" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr align="center" height="18">
+                    <td id="a sel_1" width="20%"></td>
+                    <td id="a sel_2" width="20%"></td>
+                    <td id="a sel_3" width="20%"></td>
+                    <td id="a sel_4" width="20%"></td>
+                    <td id="a sel_5" width="20%"></td>
+                  </tr>
+                  <tr height="4">
+                    <td></td>
+                  </tr>
+                  <tr align="center" height="18">
+                    <td id="a sel_6" width="20%"></td>
+                    <td id="a sel_7" width="20%"></td>
+                    <td id="a sel_8" width="20%"></td>
+                    <td id="a sel_9" width="20%"></td>
+                    <td id="a sel_10" width="20%"></td>
+                  </tr> 
+                  <tr height="4">
+                    <td></td>
+                  </tr>                 
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr height="15">
+            <td></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <button type="button" onclick="cancelVote()" id="btn_cancle">선택취소</button>
+              <input type="button" value="선택">
+            </td>
+          </tr>
+          <tr height="12">
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+      <td></td>
+    </tr>
+    </div>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+
+var sel_num = new Array(46);
+var sel_cnt = 0;
+
+$('img').on({
+
+  
+   click : function(){
+     if($(this).attr("src").match('on')){
+       sel_cnt--;
+       $(this).attr("src",$(this).attr("src").replace(/on\.gif$/,'off.gif'));
+     }else {
+       if(sel_cnt>9){
+         alert("10개이상 선택할 수 없습니다.")
+         return false;
+       }
+       sel_cnt++;
+       $(this).attr("src",$(this).attr("src").replace(/off\.gif$/,'on.gif'));
+     }
+     console.log("sel_cnt : " + sel_cnt);
+}
+});
+
+
+
+$('#btn_cancle').on({
+  click : function(){
+    sel_cnt = 0;
+    if($(this).attr("src").match('on')){
+      $(this).attr("src",$(this).attr("src").replace(/on\.gif$/,'off.gif'));
+    }
+  }
+});
+
+	  	
+
+</script>
+
+   
+</body>
+</html>

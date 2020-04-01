@@ -1,0 +1,12 @@
+package com.spring.lotto.service;
+
+import com.spring.lotto.domain.MemberVO;
+
+public interface MemberService {
+	
+	int create(MemberVO vo);
+	
+	MemberVO loginCheck(MemberVO vo);
+
+	MemberVO read(String member_id);
+}

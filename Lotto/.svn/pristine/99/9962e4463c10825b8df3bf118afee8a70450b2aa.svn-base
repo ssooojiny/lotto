@@ -1,0 +1,54 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+  pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>minlotto 페이지 입니다</title>
+</head>
+<body>
+  <h1>minlotto 페이지 입니다</h1>
+
+  <c:forEach var="basiclottoLastNumber" items="${basiclottoLastNumber}"
+    varStatus="status">
+    <p>${status.count}
+      :
+      <c:out value="${basiclottoLastNumber}" />
+    </p>
+  </c:forEach>
+  
+  
+  <c:forEach var="selected_num1" items="${selected_num}"
+    varStatus="status">
+    <p>${status.count}
+      :
+      <c:out value="${selected_num1}" />
+    </p>
+  </c:forEach>
+
+  <table>
+    <tbody>
+      <c:forEach var="vo" items="${selected_num }">
+        <tr>
+          <td><div class="loto_img">
+              <hr>
+              <div style="background-color: #ff99cc;">${vo.selected_num }</div>
+            </div></td>
+        </tr>
+      </c:forEach>
+    </tbody>
+  </table>
+
+
+
+
+
+
+  <script type="text/javascript">
+      console.log("여기까지 오나 ?")
+    </script>
+</body>
+</html>

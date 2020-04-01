@@ -1,0 +1,18 @@
+package com.spring.lotto.persistence;
+
+import java.util.List;
+
+import com.spring.lotto.domain.BoardVO;
+import com.spring.lotto.pageutil.PageCriteria;
+
+public interface BoardDAO {
+  public abstract List<BoardVO> select();
+  public abstract BoardVO select(int bno);
+  public abstract int insert(BoardVO vo);
+  public abstract int update(BoardVO vo);
+  public abstract int delete(int bno);
+  public abstract List<BoardVO> select(String userid);
+  public abstract List<BoardVO> selectByTitleOrContent(String keyword);
+  public abstract List<BoardVO> select(PageCriteria criteria);
+  public abstract int getTotalNumsOfRecords();
+}
